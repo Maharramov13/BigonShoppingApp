@@ -1,4 +1,5 @@
 using BigonShoppingApp.Models;
+using BigonShoppingApp.Servicers.email;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,13 +13,17 @@ builder.Services.AddDbContext<AppDbContext>(x =>
     x.UseSqlServer(connectionString);
 });
 
-
-
+builder.Services.AddScoped<IEmailService, EmailService>();
 var app = builder.Build();
 
 
 
 app.UseStaticFiles();
+
+app.MapControllerRoute(
+        name: "areas",
+        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+      );
 
 app.MapControllerRoute(
     name: "default",

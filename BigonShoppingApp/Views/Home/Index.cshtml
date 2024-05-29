@@ -6307,7 +6307,7 @@
                     id="subscribe"
                     type="text"
                   />
-                  <button type="submit" class="submit">subscribe</button>
+                  <a  class="submit" id="submitt">subscribe</a>
                 </form>
               </div>
             </div>
@@ -6315,3 +6315,33 @@
         </div>
       </div>
       <!-- Signup-Newsletter End -->
+      
+      @section scripts{
+         <script type="text/javascript">
+
+            $("#submitt").click(function(){
+            var email = $("#subscribe").val();
+            
+            $.ajax({
+            
+                method:'POST',
+                url:'/Subscriber/CreateSub',
+                data:{email:email},
+                success:function(response){
+                    console.log(response)
+                },
+                error:function(response){
+                    console.log(response)
+                }
+            
+            
+            })
+
+
+        });
+
+
+
+         </script>
+      }
+

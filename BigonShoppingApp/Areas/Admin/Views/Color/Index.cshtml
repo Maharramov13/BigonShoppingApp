@@ -1,0 +1,42 @@
+﻿
+@model List<Color>
+
+<div class="card">
+
+    <div class="card-header">
+        <div>
+            <h5>Colors</h5>
+            <a>class="btn btn-success ml-3"</a>
+        </div>
+        <span>use class <code>table</code> inside table element</span>
+
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Color</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var color in Model){
+                        <tr>
+                            <td>
+                                @color.name
+                                @color.hexcode
+                            </td>
+                        </tr>
+                    }
+
+                    
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        
+                    </tr>
+                    <tr>

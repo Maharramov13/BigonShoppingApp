@@ -22,7 +22,7 @@ namespace BigonShoppingApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BigonShoppingApp.Models.Category", b =>
+            modelBuilder.Entity("BigonShoppingApp.Models.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,9 +59,28 @@ namespace BigonShoppingApp.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("BigonShoppingApp.Models.Category", b =>
+            modelBuilder.Entity("BigonShoppingApp.Models.Entities.Subscriber", b =>
                 {
-                    b.HasOne("BigonShoppingApp.Models.Category", "SubCategory")
+                    b.Property<string>("EmailAdress")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("ApprovedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
+                    b.HasKey("EmailAdress");
+
+                    b.ToTable("Subsciribers");
+                });
+
+            modelBuilder.Entity("BigonShoppingApp.Models.Entities.Category", b =>
+                {
+                    b.HasOne("BigonShoppingApp.Models.Entities.Category", "SubCategory")
                         .WithMany()
                         .HasForeignKey("SubCategoryId");
 
