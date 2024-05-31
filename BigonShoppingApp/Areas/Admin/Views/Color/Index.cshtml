@@ -1,14 +1,15 @@
-﻿
-@model List<Color>
+﻿@model List<Color>
+
+@{
+    var count = 1;
+}
 
 <div class="card">
-
     <div class="card-header">
-        <div>
-            <h5>Colors</h5>
-            <a>class="btn btn-success ml-3"</a>
-        </div>
-        <span>use class <code>table</code> inside table element</span>
+        <h5>Color</h5>
+        <a asp-action="Create" asp-controller="color" class="btn btn-success">
+            Add color +
+        </a>
 
     </div>
     <div class="card-block table-border-style">
@@ -17,26 +18,73 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Color</th>
-                        
+                        <th> Name</th>
+                        <th> HaxCode</th>
+                        <th> Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach(var color in Model){
+                    @foreach (var item in Model)
+                    {
                         <tr>
+                            <th scope="row">@count</th>
+                            <td>@item.Name</td>
                             <td>
-                                @color.name
-                                @color.hexcode
+                                <span class="my-color" style="background:@item.HaxCode"></span>
+                            </td>
+                            <td>
+                                <a class="btn btn-success" asp-action="edit" asp-controller="color" asp-route-id="@item.Id"> Edit</a>
+                                <a class="btn btn-primary" asp-action="details" asp-controller="color" asp-route-id="@item.Id"> Details</a>
+                               
+                                <a onclick="removeColor(@item.Id, '@item.Name')" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
+                        count++;
                     }
 
-                    
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        
-                    </tr>
-                    <tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section custom_js {}
+    <script>
+        function removeColor(id, name) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, don't delete!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        method: "POST",
+                        url: '@Url.Action("remove", "color")',
+                    data: { id },
+                    success: (result) => {
+                        if (!result.error) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: result.message,
+                                icon: "success"
+                            });
+                        }
+
+
+                    }
+    
+                
+    .my-color {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 100px;
+        border: 1px solid #cdcdcd;
+    }
+</style>

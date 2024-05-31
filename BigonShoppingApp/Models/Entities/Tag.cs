@@ -2,10 +2,8 @@
 
 namespace BigonShoppingApp.Models.Entities
 {
-    public class Color:BaseEntity
+    public class Tag:BaseEntity
     {
         public string Name { get; set; }
-        public string HaxCode { get; set; }
-
     }
 }

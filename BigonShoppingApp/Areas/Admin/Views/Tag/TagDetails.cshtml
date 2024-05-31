@@ -1,0 +1,32 @@
+﻿@model Tag;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Tag Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card bg-info text-white">
+            <div class="card-header">
+                <h1>Info Tag details</h1>
+            </div>
+            <div class="card-body">
+                <p><strong>Name:</strong> @Model.Name</p>
+                <p><strong>ID:</strong> @Model.Id</p>
+                <br />
+                <p><strong>Created At:</strong> @Model.CreatedAt</p>
+                <p><strong>Deleted At:</strong> @Model.DeletedAt</p>
+                <p><strong>Updated At:</strong> @Model.UpdatedAt</p>
+                <p><strong>Createad By:</strong>@Model.CreatedBy</p>
+                <p><strong>Deleted By:</strong>@Model.DeletedBy</p>
+                <p><strong>Updated By:</strong>@Model.UpdatedBy</p>
+
+            </div>
+        </div>
+    </div>
+</body>
+    

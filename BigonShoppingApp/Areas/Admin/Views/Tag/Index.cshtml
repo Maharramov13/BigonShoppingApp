@@ -1,0 +1,57 @@
+﻿@model List<Tag>
+
+@{
+    var count = 1;
+}
+
+<div class="card">
+    <div class="card-header">
+        <h5>Tag</h5>
+        <a asp-action="Create" asp-controller="tag" class="btn btn-success">
+            Add Tag +
+        </a>
+
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th> Name</th>
+                        <th> Tag Id</th>
+                        <th> Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@count</th>
+                            <td>@item.Name</td>
+                            <td>
+                                <span class="my-tag" style="background:@item.Name"></span>
+                            </td>
+                            <td>
+                                <a class="btn btn-success" asp-action="edit" asp-controller="tag" asp-route-id="@item.Id"> Edit</a>
+                                <a class="btn btn-primary" asp-action="details" asp-controller="tag" asp-route-id="@item.Id"> Details</a>
+                                <a class="btn btn-danger" asp-action="delete" asp-controller="tag" asp-route-id="@item.Id"> Delete</a>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .my-tag {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 100px;
+        border: 1px solid #cdcdcd;
+    }

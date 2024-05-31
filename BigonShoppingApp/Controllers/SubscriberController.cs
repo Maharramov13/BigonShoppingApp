@@ -53,7 +53,37 @@ namespace BigonShoppingApp.Controllers
             return Ok(new { correct = "Elave olundu:)" });
         }
 
+        public async Task<IActionResult> ApproveSub(string email)
+        {
+            if (!IsValidEmail(email))
+                return BadRequest();
 
+            Subscriber subscriber = new Subscriber()
+            {
+                EmailAdress = email,
+                CreatedAt = DateTime.Now
+            };
+
+
+
+            string title = "Hi";
+
+            string token = $"#demo-{subscriber.EmailAdress}-{subscriber.CreatedAt:yyyy-MM-dd HH:mm:ss.fff}-bigon";
+            token = HttpUtility.UrlEncode(token);
+            string url = $"{Request.Scheme}://{Request.Host}/subscribe-approve?token={token}";
+            string body = $"<p>Hi,</p><p>To Sub <a href=\"{url}\">Click!</a></p>";
+
+            var flag = await _service.SendAsync(email, title, body);
+
+            if (!flag)
+                return BadRequest(new { asdas = "Request getmedi" });
+
+            await _context.Subsciribers.AddAsync(subscriber);
+            await _context.SaveChangesAsync();
+
+
+            return Ok(new { correct = "Elave olundu:)" });
+        }
 
         public static bool IsValidEmail(string email)
         {

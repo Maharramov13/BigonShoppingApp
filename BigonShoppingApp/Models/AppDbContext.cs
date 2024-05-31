@@ -13,6 +13,7 @@ namespace BigonShoppingApp.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Subscriber> Subsciribers { get; set; }
         public DbSet<Color> Colors { get; set; }
+        public DbSet<Tag> Tags { get; set; }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var datas = ChangeTracker.Entries<BaseEntity>();

@@ -105,6 +105,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="wwwroot\Libs\" />
   </ItemGroup>
 
   <ItemGroup>

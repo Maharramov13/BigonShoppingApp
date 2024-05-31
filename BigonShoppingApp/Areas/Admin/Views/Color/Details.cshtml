@@ -1,0 +1,45 @@
+﻿@model Color;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Color Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card bg-info text-white">
+            <div class="card-header">
+                <h1>Info Color details</h1>
+            </div>
+            <div class="card-body">
+                <p><strong>Name:</strong> @Model.Name</p>
+                <p><strong>Hex Code:</strong> @Model.HaxCode</p>
+                <p><strong>ID:</strong> @Model.Id</p>
+                <br />
+                <p><strong>Created At:</strong> @Model.CreatedAt</p>
+                <p><strong>Deleted At:</strong> @Model.DeletedAt</p>
+                <p><strong>Updated At:</strong> @Model.UpdatedAt</p>
+                <p><strong>Createad By:</strong>@Model.CreatedBy</p>
+                <p><strong>Deleted By:</strong>@Model.DeletedBy</p>
+                <p><strong>Updated By:</strong>@Model.UpdatedBy</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<div>
+    <a class="btn btn-light" asp-action="index" asp-controller="color">Back</a>
+    <a class="btn btn-warning" asp-action="edit" asp-controller="color" asp-route-id="Id">Edit</a>
+
+</div>
+
+
+

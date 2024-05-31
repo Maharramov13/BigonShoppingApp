@@ -1,0 +1,29 @@
+﻿@model Color;
+
+
+<div class="card-block">
+    <h4 class="sub-title">Edit color</h4>
+    <form method="post">
+        <div class="form-group row">
+            <label asp-for="Name" class="col-sm-2 col-form-label">Color name</label>
+            <div class="col-sm-10">
+                <input asp-for="Name" type="text" class="form-control" placeholder="Add color name">
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label asp-for="HaxCode" class="col-sm-2 col-form-label">Color</label>
+            <div class="col-sm-10">
+                <input asp-for="HaxCode" type="color" class="form-control">
+            </div>
+        </div>
+
+        <button class="btn btn-primary">Edit</button>
+
+    </form>
+
+</div>
+
+
